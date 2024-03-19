@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +73,83 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+    <!-- Normal Breadcrumb Begin -->
+    <section class="normal-breadcrumb set-bg" data-setbg="{{asset('assets/img/normal-breadcrumb.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="normal__breadcrumb__text">
+                        <h2>Register</h2>
+                        <p>Welcome to Movie Center.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Normal Breadcrumb End -->
+
+    <!-- Signup Section Begin -->
+    <section class="signup spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="login__form">
+                        <h3>Register</h3>
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <div class="input__item ">
+                                <input id="email" type="email"
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email"
+                                    placeholder="Enter Your Email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <span class="icon_mail"></span>
+                            </div>
+                            <div class="input__item">
+                                <input id="name" type="text"
+                                    class="form-control @error('name') is-invalid @enderror" name="name"
+                                    value="{{ old('name') }}" required autocomplete="name" autofocus
+                                    placeholder="Enter Your Name">
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <span class="icon_profile"></span>
+                            </div>
+                            <div class="input__item">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    autocomplete="new-password" placeholder="Enter Your Password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror <span class="icon_lock"></span>
+                            </div>
+                            <div class="input__item">
+                                <input id="password-confirm" type="password" class="form-control"
+                                    name="password_confirmation" required autocomplete="new-password"
+                                    placeholder="Confirm Your Password">
+                                <span class="icon_lock"></span>
+                            </div>
+                            <button type="submit" class="site-btn">Register Now</button>
+                        </form>
+                        {{-- <h5>Already have an account? <a href="#">Log In!</a></h5> --}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Signup Section End -->
 @endsection
