@@ -75,7 +75,9 @@
                                                 <li>{{ $trendingShow->genere }}</li>
 
                                             </ul>
-                                            <h5><a href="anime-details.html">{{ $trendingShow->name }}</a></h5>
+                                            <h5><a
+                                                    href="{{ route('show.detail', $trendingShow->id) }}">{{ $trendingShow->name }}</a>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -97,22 +99,24 @@
                         </div>
                         <div class="row">
                             @foreach ($actionShows as $actionShow)
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg"
-                                        data-setbg="{{ asset('assets/img/popular/popular-1.jpg') }}">
-                                        {{-- <div class="ep">18 / 18</div> --}}
-                                        {{-- <div class="comment"><i class="fa fa-comments"></i> 11</div> --}}
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>{{$actionShow->genere}}</li>
-                                        </ul>
-                                        <h5><a href="#">{{$actionShow->name}}</a></h5>
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg"
+                                            data-setbg="{{ asset('assets/img/popular/popular-1.jpg') }}">
+                                            {{-- <div class="ep">18 / 18</div> --}}
+                                            {{-- <div class="comment"><i class="fa fa-comments"></i> 11</div> --}}
+                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <ul>
+                                                <li>{{ $actionShow->genere }}</li>
+                                            </ul>
+                                            <h5><a
+                                                    href="{{ route('show.detail', $actionShow->id) }}">{{ $actionShow->name }}</a>
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -131,22 +135,25 @@
                         </div>
                         <div class="row">
                             @foreach ($recentShows as $recentShow)
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="{{asset('assets/img/recent/recent-1.jpg')}}">
-                                        {{-- <div class="ep">18 / 18</div>
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg"
+                                            data-setbg="{{ asset('assets/img/recent/recent-1.jpg') }}">
+                                            {{-- <div class="ep">18 / 18</div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div> --}}
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                        
-                                            <li>{{$recentShow->genere}}</li>
-                                        </ul>
-                                        <h5><a href="#">{{$recentShow->name}}</a></h5>
+                                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <ul>
+
+                                                <li>{{ $recentShow->genere }}</li>
+                                            </ul>
+                                            <h5><a
+                                                    href="{{ route('show.detail', $recentShow->id) }}">{{ $recentShow->name }}</a>
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
