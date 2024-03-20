@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Show\Show;
+use App\Models\Show;
 use \Illuminate\Support\Str;
 
 class HomeController extends Controller
