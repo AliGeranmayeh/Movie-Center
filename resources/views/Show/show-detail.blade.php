@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{url('/home')}}"><i class="fa fa-home"></i> Home</a>
                         <a href="./categories.html">Categories</a>
                         <span>{{ $show->genere }}</span>
                     </div>
@@ -49,7 +49,7 @@
                                             <li><span>Genre:</span>{{ $show->genere }}</li>
 
                                             <li><span>Duration:</span> {{ $show->duration }}</li>
-                                            <li><span>Quality:</span> {{ $show->quality}}</li>
+                                            <li><span>Quality:</span> {{ $show->quality }}</li>
                                             <li><span>Views:</span> 131,541</li>
                                         </ul>
                                     </div>
@@ -142,26 +142,14 @@
                         <div class="section-title">
                             <h5>you might like...</h5>
                         </div>
-                        <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-1.jpg">
-                            <div class="ep">18 / ?</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            <h5><a href="#">Boruto: Naruto next generations</a></h5>
-                        </div>
-                        <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-2.jpg">
-                            <div class="ep">18 / ?</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                        </div>
-                        <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-3.jpg">
-                            <div class="ep">18 / ?</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            <h5><a href="#">Sword art online alicization war of underworld</a></h5>
-                        </div>
-                        <div class="product__sidebar__view__item set-bg" data-setbg="img/sidebar/tv-4.jpg">
-                            <div class="ep">18 / ?</div>
-                            <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
-                        </div>
+                        @foreach ($randomShows as $randomShow)
+                            <div class="product__sidebar__view__item set-bg"
+                                data-setbg="{{ asset('assets/img/sidebar/tv-1.jpg') }}">
+                                <div class="ep">18 / ?</div>
+                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                <h5><a href="#">{{ $randomShow->name }}</a></h5>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

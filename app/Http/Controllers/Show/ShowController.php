@@ -10,6 +10,10 @@ class ShowController extends Controller
 {
     public function show(Show $show)
     {
-        return view('Show.show-detail', ['show' => $show]);
+        $randomShows = Show::query()->inRandomOrder()->take(3)->get();
+        return view('Show.show-detail',[
+             'show' => $show,
+             'randomShows' => $randomShows
+        ]);
     }
 }
