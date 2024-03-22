@@ -14,7 +14,7 @@ class ShowController extends Controller
     {
         $randomShows = Show::query()->inRandomOrder()->take(3)->get();
 
-        $comments = ($show->comments()->orderBy('id','desc')->get())
+        $comments = ($show->comments()->orderBy('id', 'desc')->get())
             ->map(
         fn($comment) =>
         $comment->setAttribute('author', User::find($comment->author_id)->name));
@@ -25,5 +25,18 @@ class ShowController extends Controller
             'randomShows' => $randomShows,
             'comments' => $comments
         ]);
+    }
+
+    public function createComment(Request $request, Show $show)
+    {
+
+        Comment::query()->create([
+            'author_id' => auth()->user()->id,
+            'show_id' => $show->id,
+            'content' => $request->comment
+        ]);
+
+        return redirect()->route('show.detail', $show->id)->with(['success' => 'comment added successfully']);
+
     }
 }

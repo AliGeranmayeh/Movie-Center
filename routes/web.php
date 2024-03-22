@@ -25,3 +25,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('shows/{show}', [ShowController::class, 'show'])->name('show.detail');
+
+Route::post('shows/comment/{show}', [ShowController::class, 'createComment'])->name('add.comment');

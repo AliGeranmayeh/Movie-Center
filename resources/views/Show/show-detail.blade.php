@@ -16,6 +16,11 @@
     </div>
     <!-- Breadcrumb End -->
 
+    @if (session()->has('success'))
+        <div class="container alert alert-success" style="margin-top: 2%">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <!-- Anime Section Begin -->
     <section class="anime-details spad">
         <div class="container">
@@ -67,27 +72,28 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8">
                     @if (!$comments->isEmpty())
-                    <div class="anime__details__review">
-                        <div class="section-title">
-                            <h5>Reviews</h5>
-                        </div>
-                        @foreach ($comments as $comment)
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__text">
-                                    <h6>{{ $comment->author }}</h6>
-                                    <p>{{ $comment->content }}</p>
-                                </div>
+                        <div class="anime__details__review">
+                            <div class="section-title">
+                                <h5>Reviews</h5>
                             </div>
-                        @endforeach
-                    </div>
+                            @foreach ($comments as $comment)
+                                <div class="anime__review__item">
+                                    <div class="anime__review__item__text">
+                                        <h6>{{ $comment->author }}</h6>
+                                        <p>{{ $comment->content }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     @endif
-                   
+
                     <div class="anime__details__form">
                         <div class="section-title">
                             <h5>Your Comment</h5>
                         </div>
-                        <form action="#">
-                            <textarea placeholder="Your Comment"></textarea>
+                        <form action="{{ route('add.comment', $show->id) }}" , method="POST">
+                            @csrf
+                            <textarea name='comment' placeholder="Your Comment"></textarea>
                             <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
                         </form>
                     </div>
