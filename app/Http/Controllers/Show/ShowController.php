@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Show;
 use App\Models\Comment;
 use App\Models\User;
+use App\Models\Episode;
 
 class ShowController extends Controller
 {
@@ -46,5 +47,17 @@ class ShowController extends Controller
             $show->users()->attach(auth()->user()->id);
 
         return redirect()->route('show.detail', $show->id);
+    }
+
+
+    public function episodes(Show $show , Episode $episode)
+    {
+        $episodesCount = $show->episodes()->count();
+
+        return view('Show.show-episodes',[
+            'count' => $episodesCount,
+            'episode' => $episode
+        ]);
+
     }
 }
