@@ -32,4 +32,9 @@ class Show extends Model
     {
         return $this->belongsToMany(User::class , 'following_list');
     }
+
+    public function episodes(): HasMany
+    {
+        return $this->hasMany(Episode::class);
+    }
 }
