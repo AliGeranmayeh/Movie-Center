@@ -36,7 +36,15 @@ class ShowController extends Controller
             'content' => $request->comment
         ]);
 
-        return redirect()->route('show.detail', $show->id)->with(['success' => 'comment added successfully']);
+        return redirect()->route('show.detail', $show->id)->with(['comment_success' => 'comment added successfully']);
+    }
 
+    public function followShow(Show $show)
+    {
+        ($show->users->contains(auth()->user()->id)) ? 
+            $show->users()->detach(auth()->user()->id) :
+            $show->users()->attach(auth()->user()->id);
+
+        return redirect()->route('show.detail', $show->id);
     }
 }

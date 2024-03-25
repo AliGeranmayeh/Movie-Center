@@ -61,7 +61,14 @@
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
+                                <a href="{{ route('show.follow', $show->id) }}" class="follow-btn"><i
+                                        class="fa fa-heart-o"></i>
+                                    @if ($show->users->contains(auth()->user()->id))
+                                        Followed
+                                    @else
+                                        Follow
+                                    @endif
+                                </a>
                                 <a href="anime-watching.html" class="watch-btn"><span>Watch Now</span> <i
                                         class="fa fa-angle-right"></i></a>
                             </div>

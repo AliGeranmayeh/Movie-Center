@@ -27,3 +27,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('shows/{show}', [ShowController::class, 'show'])->name('show.detail');
 
 Route::post('shows/comment/{show}', [ShowController::class, 'createComment'])->name('add.comment');
+
+Route::get('shows/follow/{show}', [ShowController::class, 'followShow'])->name('show.follow');
